@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    external-dns.alpha.kubernetes.io/hostname: nginx-test.iffdev.com
+    kubernetes.io/ingress.class: alb
+  finalizers:
+  - ingress.k8s.aws/resources
+  generation: 1
+  labels:
+    app: webstarter
+  name: webstarter-app-ingress
+  namespace: webstarter
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: webstarter
+          servicePort: 80
+        path: /*
+        pathType: ImplementationSpecific
+status:
+  loadBalancer:
+    ingress:
+    - hostname: internal-k8s-nginx-nginxing-b8f3e86286-2123719165.us-east-1.elb.amazonaws.com
+
+
