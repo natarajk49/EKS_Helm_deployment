@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: 889166750058.dkr.ecr.us-east-1.amazonaws.com/webstarter
+  repository: repository
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: tag
 
 imagePullSecrets: 
   - name: regcred
